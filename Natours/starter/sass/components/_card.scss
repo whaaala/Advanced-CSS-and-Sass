@@ -1,0 +1,201 @@
+.card {
+  //FUNCTIONALITY
+  perspective: 150rem; // thos make it look like the Element is coming towards the User once an Element is HOver over -- this NEED TO BE ON THE PARENT Element and the value needs to be huge
+  -moz-perspective: 150rem; // this make it fire-fox compatable
+  position: relative; // the Child Element a disposition in relation to the parent Element
+  height: 52rem; // give the Parent the same Height as the: &__side, in other to return it back to the flow and position of the Parent Element
+
+  &__side {
+    height: 52rem;
+    transition: all 0.8s ease;
+    position: absolute; // this used to place the Front and Back side On Top of each other
+    top: 0;
+    left: 0;
+    width: 100%; // this is used to give the Front and Back side the width of their Parent Element
+    backface-visibility: hidden; // this will hide the back part of the Element
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    &--front {
+      background-color: $color-white;
+    }
+
+    &--back {
+      transform: rotateY(
+        180deg
+      ); // the back side of the card is already at 180 degrees
+
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-seondary-light,
+          $color-seondary-dark
+        );
+      }
+
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        );
+      }
+
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(
+      -180deg
+    ); // this is used to rotate the Element on Y-axis in the oposite direction
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0deg); // this is used to rotate the Element on Y-axis
+  }
+
+  //FRONT SIDE STYLING
+  &__picture {
+    background-size: cover;
+    height: 23rem; // the image Element an Height to the image added through CSS can be shown on the card
+    background-blend-mode: screen; // this is used to blend the image and  the gradient used in:  background-image; below
+    -webkit-background-clip: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    background-clip: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 85%,
+      0 100%
+    ); // used to clip the background image
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    &--1 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-seondary-light,
+          $color-seondary-dark
+        ),
+        url(../img/nat-5.jpg);
+    }
+
+    &--2 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url(../img/nat-6.jpg);
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        ),
+        url(../img/nat-7.jpg);
+    }
+
+
+  }
+
+  &__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: $color-white;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%; // this is used to reduce the space the element can occupy
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem; // this is used to add space to the Element
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; // this treat an Element like it is two different element
+
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-seondary-light, 0.85),
+        rgba($color-seondary-dark, 0.85)
+      );
+    }
+
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+      );
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-tertiary-light, 0.85),
+        rgba($color-tertiary-dark, 0.85)
+      );
+    }
+  }
+
+  &__details {
+    padding: 3rem;
+
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; // this is to center the border bottom
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
+  }
+
+  //BACK SIDE STYLING
+  &__cta{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); // move the Element: -50% of the width of the Eelement and -50% of the Height of the Eelement
+  width: 90%;
+  text-align: center;
+  }
+
+  &__price-box {
+    text-align: center;
+    color: $color-white;
+    margin-bottom: 8rem;
+  }
+
+  &__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  &__price-value {
+    font-size: 6rem;
+    font-weight: 100;
+
+  }
+
+}

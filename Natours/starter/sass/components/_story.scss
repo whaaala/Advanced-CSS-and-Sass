@@ -1,0 +1,72 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color:rgba($color-white, .6);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem; // padding left to help balance out the padding added with: transform: translateX(-3rem);
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+
+  & > * {
+    transform: skewX(12deg);
+  }
+
+  &__shape {
+    height: 15rem;
+    width: 15rem;
+    // background-color: orangered;
+    float: left; // make the Element float to the left and all other Element floating around it
+    -webit-shape-outside: circle(50% at 50% 50%); // This make it work on Safari
+    shape-outside: circle(
+      50% at 50% 50%
+    ); // this is a Vector, that is used to form a floating text circle around the Element.
+    // The First 50% is the Radius (which will be Half the Height and the Width of the Element ),
+    //  The Second 50% is the Horizontal unit
+    //  The third 50% is the Vertical unit
+    // In other for: shape-outside, to work, the Element MUST BE Floated and the Element MUST have a HEIGHT and a WIDTH
+
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(
+      50% at 50% 50%
+    ); // this is used to make an Element shape into a circle
+
+    transform: translateX(-3rem) skewX(12deg);
+    position: relative;
+  }
+
+  &__img {
+    height: 100%; // this is used to make the image take the exact height of it parent Element
+    transform: translateX(-4rem) scale(1.4); // this is used to place the image in the center of the Element and Scale the image bigger
+  }
+
+  &__text {
+    transform: skewX(12deg);
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%); // this is used to translate the text
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0; // this is used to make the text NOT appear on the image
+    transition: all 0.5s;
+    backface-visibility: hidden;
+  }
+
+  &:hover &__caption {
+    opacity: 1; // this is used to display the text when it hovered over
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__img {
+    transform: translateX(-4rem) scale(1);// this is used to place the image in the center of the Element and Scale the image it original size
+
+    filter: blur(3px) brightness(80%); // this is used to blur the image and the: brightness is used to make the image darker or lighter
+  }
+}

@@ -1,0 +1,71 @@
+.composition {
+  position: relative;
+
+  &__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
+    border-radius: 1px;
+    position: absolute;
+    z-index: 10; // this is used to give each image an Overlapping value
+    transition: all 0.2s;
+    outline-offset: 2rem; // this is used to create Space between the outline around the image and the image
+
+    @include respond(tab-port){
+      float: left;
+      position: relative;
+      width: 33.3333333333%;
+      box-shadow: 0 1.5rem 3rem rgba($color-black, 0.2);
+
+    }
+
+    &--p1 {
+      left: 0; // this stay in the same opsition on the X-axis, relative to the Parent Element (in this case: the .composition Element) --> Moving 0px from the Left side of the Container
+   
+      top: -2rem; // this is to move the image 20px in the upwards direction of Y-axis, relative to the Parent Element (in this case: the .composition Element) --> Moving 20px from the Top side of the Container
+
+      @include respond(tab-port){
+        top: 0;
+        transform: scale(1.2);
+      }
+
+    }
+
+    &--p2 {
+      right: 0; // this Moves to the positve end of the X-axis, relative to the Parent Element (in this case: the .composition Element) ) --> Moving 0px from the Right side of the Container
+
+      top: 2rem; // this is to move the image 20px in the Downwards direction of Y-axis, relative to the Parent Element (in this case: the .composition Element)  --> Moving 20px from the Bottom side of the Container
+
+      @include respond(tab-port){
+        top: -1rem;
+        transform: scale(1.3);
+        z-index: 100;
+      }
+
+    }
+
+    &--p3 {
+      left: 20%; // this Moves to the 20% from the nigative direction of the X-axis, relative to the Parent Element (in this case: the .composition Element) --> Moving 20 percent from the Left side of the Container
+
+      top: 10rem; // this is to move the image 100px in the Dowards direction of Y-axis, relative to the Parent Element (in this case: the .composition Element)  --> Moving 100px from the Top side of the Container
+
+      @include respond(tab-port){
+        top: 1rem;
+        left: 0;
+        transform: scale(1.1);
+      }
+
+    }
+
+    &:hover {
+      outline: 1.5rem solid $color-primary; // this is used to set a border around the image, it similar to border
+
+      transform: scale(1.05) translateY(-0.5rem); // this is used to make the image hover over increase in size
+      box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5);
+      z-index: 20; // this is used to give the image hover over the highest overlapping value, so it will be at the top of all other images
+    }
+  }
+
+  &:hover &__photo:not(:hover) { // this is used to selected the images thar are not hover over 
+    transform: scale(0.95); // this is used to scale the images down 
+  }
+}

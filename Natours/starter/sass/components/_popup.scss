@@ -1,0 +1,95 @@
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color-black, 0.8);
+  z-index: 9999;
+
+  //hiding the pop-up
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+
+  &__content {
+    @include absCenter;
+    width: 75%;
+    background-color: $color-white;
+    box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+    border-radius: 3px;
+    display: table; // this used to fake a table
+    overflow: hidden; // this is used to hide the edges of the images overlapping the border radius of the box
+    
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25); // the translate(-50%, -50%)  is repeated becasue we can not have two transform in on Rule, and the first transform is from the: absCenter Mixin, therefore, it needs to be repeated in other for it to take effect
+    transition: all 0.5s 0.2s; // the .2s is for the delay
+  }
+
+  &__left {
+    width: 33.333333%;
+    display: table-cell; // this is used to fake a cell in a table
+  }
+
+  &__right {
+    width: 66.6666667%;
+    display: table-cell; // this is used to fake a cell in a table
+    vertical-align: middle; // this is used to align the cell to a the middle
+    padding: 3rem 5rem;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+
+    //Column layout using CSS
+    -moz-column-count: 2;
+    -moz-column-gap: 5rem;
+    -moz-column-rule: 1px solid $color-grey-light-2;
+
+    column-count: 2;
+    column-gap: 5rem;
+    column-rule: 1px solid $color-grey-light-2;
+
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  //use the Anchor to target the popup box
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:target &__content {
+    //this is used to scale up the content when the user click to display the content
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &__close {
+    &:link,
+    &:visited {
+      color: $color-grey-dark;
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 3rem;
+      text-decoration: none;
+      display: inline-block;
+      line-height: 1;
+      transition: all 0.2s;
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}

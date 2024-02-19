@@ -1,0 +1,50 @@
+.header {
+    height: 95vh; /* the Height of the header Element should be 95% of the Viewport Screen*/
+  
+    /* background-image: url(../img/hero.jpg) ; this is used to set the background image */
+  
+    background-size: cover; /* this makes sure the background image is fitted in the ELlement width size*/
+  
+    background-position: top; /* this ensures that the background image Top, ALWAYS stays at the top of the container Element, No matter the Viewport Size (the image will not ber Cropped out at the top)*/
+  
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)
+      ),
+      url(../img/hero.jpg); /* this is used to specfiy the grradient on a background Image*/
+  
+    /* clip-path: polygon(x y, x y, x y, x y); */
+    -webkit-clip-path:polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  
+    position: relative;
+
+    @include respond(phone){
+      -webkit-clip-path:polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+    }
+  
+
+
+
+    &__logo-box {
+      position: absolute;
+      top: 4rem;
+      left: 4rem;
+    }
+  
+    &__logo {
+      height: 3.5rem;
+    }
+  
+    &__text-box {
+      position: absolute;
+      top: 40%; /* this is 50% from the Top of the Parent Element */
+      left: 50%; /* this si 50% from the Left of the Parent Element */
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+  }
+  
+ 

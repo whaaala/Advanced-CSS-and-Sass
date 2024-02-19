@@ -1,0 +1,55 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(
+      -10rem
+    ); /*this is to translate the Element in the X-axis direction */
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(
+      0
+    ); /*this is to translate the Element to its original position */
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(
+      10rem
+    ); /*this is to translate the Element in the X-axis direction */
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(
+      0
+    ); /*this is to translate the Element to its original position */
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(
+      3rem
+    ); /*this is to translate the Element in the Y-axis direction from TOP to Bottom*/
+  }
+
+  100% {
+    opacity: 1;
+    transform: translat(
+      0
+    ); /*this is to translate the Element to its original position */
+  }
+}

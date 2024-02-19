@@ -1,0 +1,18 @@
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%; // used to take the Parent height
+  width: 100%; // used to take the Parent width
+  z-index: -1; // this is used to place the video behind all Element in the Container
+
+  opacity: 0.15; // make the video less visible
+  overflow: hidden;
+
+  &__content {
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover; // this is used to make sure the Element (video) fit the Element while mantaining its Aspect Ratio
+  }
+}
